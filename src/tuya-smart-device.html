@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('tuya-smart-device', {
+    RED.nodes.registerType('tuya-smart-device-will', {
         category: 'smarthome',
         color: '#C7E9C0',
         defaults: {
@@ -17,7 +17,8 @@
             },
             retryTimeout: { value: 1000, required: true, validate: RED.validators.number() },
             findTimeout: { value: 1000, required: true, validate: RED.validators.number() },
-            tuyaVersion: { value: '3.1', required: false }
+            tuyaVersion: { value: '3.1', required: false },
+            deviceGateway: { value: "", required: false}
 
         },
         inputs: 1,
@@ -36,7 +37,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="tuya-smart-device">
+<script type="text/html" data-template-name="tuya-smart-device-will">
     <div class="form-row">
         <label style="width:100%" for="node-input-deviceName"><i class="fa fa-tag"></i> Device Name</label>
         <input type="text" id="node-input-deviceName" placeholder="Bulb">
@@ -49,7 +50,7 @@
         Connection Details
        </div>
     <div style="margin-bottom:10px;font-style: italic;color: brown;font-size: smaller;">
-        Use Device IP or Device Virtual ID (Don't use both)
+        Use Device IP or Device Virtual ID or both if the device is not on the same local network.
     </div>
     <div class="form-row">
         <label style="width:100%" for="node-input-deviceId" ><i class="fa fa-id-card-o"></i> Device Virtual ID</label>
@@ -85,6 +86,10 @@
         <label style="width:100%" for="node-input-tuyaVersion"><i class="fa fa-lock"></i> Tuya Protocol Version,  Default : 3.1 (don't change if you are not sure)</label>
         <input type="text" id="node-input-tuyaVersion" placeholder="" value='3.1'>
     </div>
+    <div class="form-row">
+        <label style="width:100%" for="node-input-deviceGateway"><i class="fa fa-key"></i> Device Gateway Id (If you don't know what this is, leave it blank.</label>
+        <input type="text" id="node-input-deviceKey" placeholder="Device Gateway Id">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="tuya-smart-device">
@@ -93,12 +98,9 @@
     <h3>Details</h3>
     <p>Instructions for getting the device id is available <a href="https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md">here</a></p>
    
-    <code>You will get the device id and the key once you run the wizard program as per the instructiions</code>
-    
-    
-    <p>The node takes the input which needs to be sent to the device and outouts the message if the state of the device changes.</p>
-        
+    <code>You will get the device id and the key once you run the wizard program as per the instructions</code>
 
+    <p>The node takes the input which needs to be sent to the device and outouts the message if the state of the device changes.</p>
 
     <h3>Input</h3>
     <h4>payload</h4>

@@ -112,5 +112,5 @@ module.exports = function (RED) {
         });
 
     }
-    RED.nodes.registerType("tuya-smart-device-generic", TuyaSmartDeviceSelfNode);
+    RED.nodes.registerType("tuya-smart-device-generic-will", TuyaSmartDeviceSelfNode);
 }

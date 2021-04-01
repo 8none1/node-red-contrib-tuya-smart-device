@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-tuya-smart-device",
+  "name": "node-red-contrib-tuya-smart-device-will",
   "version": "3.1.0",
   "description": "A node-red module to interact with the tuya smart devices",
   "repository": "https://github.com/vinodsr/node-red-contrib-tuya-smart-device",

@@ -10,6 +10,7 @@ module.exports = function (RED) {
         this.deviceName = config.deviceName;
         this.deviceId = config.deviceId;
         this.deviceIp = config.deviceIp;
+        this.deviceGateway = config.deviceGateway;
         node.log(`Recieved the config ${JSON.stringify(config)}`);
         this.retryTimeout = (config.retryTimeout == null || typeof config.retryTimeout == "undefined" || (typeof config.retryTimeout == "string" && config.retryTimeout.trim() == "") || (typeof config.retryTimeout == "number" && config.retryTimeout <= 0) || isNaN(config.retryTimeout)) ? 1000 : config.retryTimeout;
         this.findTimeout = (config.findTimeout == null || typeof config.findTimeout == "undefined" || (typeof config.findTimeout == "string" && config.findTimeout.trim() == "") || (typeof config.findTimeout == "number" && config.findTimeout <= 0) || isNaN(config.findTimeout)) ? 1000 : config.findTimeout;
@@ -51,7 +52,8 @@ module.exports = function (RED) {
             ip: node.deviceIp,
             issueGetOnConnect: false,
             nullPayloadOnJSONError: false,
-            version: node.tuyaVersion
+            version: node.tuyaVersion,
+            gwID: node.deviceGateway
         };
         node.log(`Connecting to Tuya with params ${JSON.stringify(connectionParams)} , findTimeout :  ${node.findTimeout} , retryTimeout:  ${node.retryTimeout} `);
         let tuyaDevice = new TuyaDevice(connectionParams);
@@ -154,5 +156,5 @@ module.exports = function (RED) {
         }, 1000)
 
     }
-    RED.nodes.registerType("tuya-smart-device", TuyaSmartDeviceNode);
+    RED.nodes.registerType("tuya-smart-device-will", TuyaSmartDeviceNode);
 }

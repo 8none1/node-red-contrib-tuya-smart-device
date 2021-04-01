@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('tuya-smart-device-generic', {
+    RED.nodes.registerType('tuya-smart-device-generic-will', {
         category: 'smarthome',
         color: '#C7E9C0',
         defaults: {
@@ -9,12 +9,12 @@
         outputs: 1,
         icon: "bridge.svg",
         label: function () {
-            return this.name || "tuya smart device generic";
+            return this.name || "tuya smart device generic will";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="tuya-smart-device-generic">
+<script type="text/html" data-template-name="tuya-smart-device-generic-will">
     <div>
        Pass the device key and virual id as payload paramters. Refer help for more details.
        <hr/>
@@ -25,7 +25,7 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="tuya-smart-device-generic">
+<script type="text/html" data-help-name="tuya-smart-device-generic-will">
     <p>This node will help you to send SET command any tuya smart device based on the payload</p>
 
     <h3>Details</h3>
